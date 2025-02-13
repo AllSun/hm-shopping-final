@@ -352,5 +352,14 @@ npm install -D  记录到devDependencies ,开发环境
 
 安装 axios   npm install axios
 
-验证码base64格式，解析到页面中
+验证码base64格式，解析到页面中，使用v-binding
+vuex刷新后会丢失
+防抖，执行一个动作后一段时间才能再执行
+节流，一段时间内只能执行一次动作
+谷歌浏览器 调试工具 network-no throttling -slow 3G 网速慢的情况
+
+请求拦截器中，添加loading
+响应拦截器中，关闭loading
+
+全局前置守卫，需要登录才可以访问的界面，提示跳转到登录界面
 ```

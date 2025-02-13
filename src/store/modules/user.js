@@ -2,6 +2,7 @@ import { getInfo, setInfo } from '@/utils/storage'
 export default {
   namespaced: true,
   // 这种生命方式是实例专属的，提供数据字段
+  // state的改变，只能通过mutations中的方法，就算是actions中的方法也要调用mutations中的方法
   state () {
     return {
       // 个人权证相关
