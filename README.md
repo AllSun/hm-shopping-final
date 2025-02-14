@@ -53,6 +53,14 @@ v-model原理，value属性和input事件的合写  :value="msg"  @input="msg = 
 computed 和method的区别，computed可以缓存结果，如果依赖项值变化了，会自动重新计算
 完整写法，默认只提供 get() ，需自定义 set(value),提供了set方法，methods中函数调用才能够修改computed中的属性值
 理解data属性和计算属性，计算属性是基于data属性加工而来
+computed 属性是基于 data 属性或者 props 来计算值的，但它也可以基于其他计算得到的值，或者基于外部的数据
+例如
+computed: {
+    // 获取地址栏的搜索关键字，直接变为一个属性，在后面的方法中可以使用this调用
+    querySearch () {
+      return this.$route.query.search
+    }
+  }
 
 watch 简单写法
 完整写法
@@ -275,7 +283,7 @@ this.setAsyncCount(666)
 
 getters，类似computed属性，基于state做的各种运算，依赖state的变化
 getters:{
-  //第一个形参是state,必须有返回值
+  //第一个形参是state,必须有返回值,第二个参数可以是getters，访问内部的getters
   filterList(state){
     return state.list.filter(item => item > 5)
   }
@@ -362,4 +370,17 @@ vuex刷新后会丢失
 响应拦截器中，关闭loading
 
 全局前置守卫，需要登录才可以访问的界面，提示跳转到登录界面
+
+开发一般步骤：静态结构、假数据、接口、接口数据请求打印看结构、渲染
+
+route.replace和push的区别，push会叠加历史记录
+
+动态类 :class={disabled: selecout === 0}
+
+<!-- 既希望保留原本的形参，又需要通过调用函数传参 => 箭头函数包装一层 -->
+<CountBox @input="(value) => changeCount(value, item.goods_id, item.goods_sku_id)" :value="item.goods_num"></CountBox>
+
+mixins混入概念，对组件公用方法的抽象，可以应用到任何组件中
+
+路由懒加载，被访问才加载组件
 ```
