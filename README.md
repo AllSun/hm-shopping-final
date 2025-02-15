@@ -1,5 +1,17 @@
-```javascript
-常见js方法总结：
+## 项目如何运行
+
+~~~
+npm install
+如出现报错，请先解决版本依赖问题
+npm run serve
+运行项目
+~~~
+
+
+
+## 本次常见JS方法整理
+
+~~~javascript
 list.reduce((sum,item) => sum += item.num,0)
 arr.filter(item => item.id !== id)
 slice()
@@ -8,13 +20,15 @@ toFixed(2)  保留2位小数
 list.map((item) => {name:item.name,value:item.price})
 join('、')
 this.$router.push(`/search?key=${this.inputValue}`)
-
 axios.get/set/delete
-vscode-配置-设置-trigger on tab
 
-业务逻辑，CRUD之后都要重新渲染
+~~~
+
+## 防抖代码
+
+~~~javascript
 以下代码为防抖优化，反复记忆写一遍
-        watch: {
+watch: {
           // 该方法会在数据变化时调用执行
           // newValue新值, oldValue老值（一般不用）
           // words (newValue) {
@@ -37,8 +51,13 @@ vscode-配置-设置-trigger on tab
             }, 300)
           }
         }
---------------------------------------------------
+~~~
 
+## Vue2语法
+
+### 指令、指令修饰符
+
+~~~javascript
 v-if  删除dom结构
 v-show  仅针对css，display:none 做控制
 v-for中的 ：key属性  对删除的影响，所谓的原地删除
@@ -48,8 +67,19 @@ v-for中的 ：key属性  对删除的影响，所谓的原地删除
 :style="{color:'red',backgroundColor:'green'}"
 v-model原理，value属性和input事件的合写  :value="msg"  @input="msg = $event.target.value"  获取事件对象的形参
 
+//指令修饰符
+v-model.trim
+v-model.number
+@click.stop
+@click.prevent  阻止默认行为
+~~~
 
+### Vue实例
 
+#### data
+
+```javascript
+data属性
 computed 和method的区别，computed可以缓存结果，如果依赖项值变化了，会自动重新计算
 完整写法，默认只提供 get() ，需自定义 set(value),提供了set方法，methods中函数调用才能够修改computed中的属性值
 理解data属性和计算属性，计算属性是基于data属性加工而来
@@ -72,12 +102,6 @@ handler(){
 
 components组件注册
 
-指令修饰符
-v-model.trim
-v-model.number
-@click.stop
-@click.prevent  阻止默认行为
-
 vue的生命周期（共8个钩子函数）
 created 初始化渲染---应用场景，一打开界面初始化渲染数据  常用
 mounted 操作dom---应用场景，一进界面，获取焦点     常用
@@ -90,16 +114,7 @@ Updated 数据修改，视图已更新
 
 vue的生命周期仅针对挂载的dom节点，vue实例优先创建于被挂载的dom，其余dom优先加载
 
-vue的工程化，源代码->自动化编译压缩组合->运行的代码
-自动化编译环节设计到不同的配置项，去将less、ts代码转化为浏览器运行的代码
-'@/' 等价于 ‘src/’从根目录开始寻找
-babel 语法降级
-jsconfig.json 配置js语法提示
-vetur vscode语法高亮插件
-less css的语法糖
-less-loader
-VueRouter vue2 vuerouter3 vuex3 /344
-eslint 代码规范 无分号规范
+
 
 组件的概念，main.js是入口，导入vue、APP.vue根组件，渲染加载然后挂载到dom节点
 结构 App.vue中template只能有一个div根元素
@@ -330,14 +345,28 @@ mapMutations('模块名',['xxx'])
 $store.dispatch('模块名/xxx'，额外参数)
 mapActions('模块名',['xxx'])
 
+```
 
-----------------------------
-工程
+## Vue工程化
+
+~~~javascript
+vue的工程化，源代码->自动化编译压缩组合->运行的代码
+自动化编译环节设计到不同的配置项，去将less、ts代码转化为浏览器运行的代码
+'@/' 等价于 ‘src/’从根目录开始寻找
+babel 语法降级
+jsconfig.json 配置js语法提示
+vetur vscode语法高亮插件
+less css的语法糖
+less-loader
+VueRouter vue2 vuerouter3 vuex3 /344
+eslint 代码规范 无分号规范
+
+vscode-配置-设置-trigger on tab   
 查看已安装的包 npm list
 组件库 按需导入（推荐）/全部导入
 pc端  element-ui  ant-design-vue
 移动端 vant-ui 更新快/Mint UI/ Cube UI
-
+业务逻辑，CRUD之后都要重新渲染
 npm install -D  记录到devDependencies ,开发环境
 
 1. 安装vant2，结果npm ERR! While resolving: @vue/eslint-config-standard@6.1.0
@@ -383,4 +412,5 @@ route.replace和push的区别，push会叠加历史记录
 mixins混入概念，对组件公用方法的抽象，可以应用到任何组件中
 
 路由懒加载，被访问才加载组件
-```
+~~~
+
